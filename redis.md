@@ -29,9 +29,66 @@ for get a strong password :
 ```bash
 openssl rand 60 | openssl base64 -A
 ```
+```
+Output
+RBOJ9cCNoGCKhlEBwQLHri1g+atWgn4Xn4HwNUbtzoVxAYxkiYBi7aufl4MILv1nxBqR4L6NNzI0X6cE
+```
+Step 2 — Testing Redis :
+
+
 then get status Redis :
 ```bash
 systemcl status redis
+```
+If it is running without any errors, this command will produce output similar to the following:
+
+```
+Output
+● redis-server.service - Advanced key-value store
+     Loaded: loaded (/lib/systemd/system/redis-server.service; enabled; vendor preset: enabled)
+     Active: active (running) since Thu 2020-04-30 23:26:54 UTC; 4s ago
+       Docs: http://redis.io/documentation,
+             man:redis-server(1)
+    Process: 36552 ExecStart=/usr/bin/redis-server /etc/redis/redis.conf (code=exited, status=0/SUCCESS)
+   Main PID: 36561 (redis-server)
+      Tasks: 4 (limit: 2345)
+     Memory: 1.8M
+     CGroup: /system.slice/redis-server.service
+             └─36561 /usr/bin/redis-server 127.0.0.1:6379
+. . .
+```
+Here, you can see that Redis is running and is already enabled, meaning that it is set to start up every time the server boots.
+
+To test that Redis is functioning correctly, connect to the server using redis-cli, Redis’s command-line client:
+```bash
+redis-cli
+```
+In the prompt that follows, test connectivity with the ping command:
+```
+ping
+```
+```
+Output
+PONG
+```
+This output confirms that the server connection is still alive. Next, check that you’re able to set keys by running:
+```
+set test "It's working!"
+```
+```
+Output
+OK
+```
+Retrieve the value by typing:
+
+```
+get test
+```
+Assuming everything is working, you will be able to retrieve the value you stored:
+
+```
+Output
+"It's working!"
 ```
 
 do it for all nodes , then run this command for replication :
