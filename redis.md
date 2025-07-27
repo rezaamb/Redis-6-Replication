@@ -38,7 +38,7 @@ Step 2 — Testing Redis :
 
 then get status Redis :
 ```bash
-systemcl status redis
+systemctl status redis
 ```
 If it is running without any errors, this command will produce output similar to the following:
 
