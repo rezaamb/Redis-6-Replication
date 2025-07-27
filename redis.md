@@ -3,11 +3,21 @@
 Step 1 — Installing and Configuring Redis :
 ```bash
 sudo apt update
+
+apt-get install lsb-release curl gpg
+
+curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
+
+sudo chmod 644 /usr/share/keyrings/redis-archive-keyring.gpg
+
+echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb jammy main" | sudo tee /etc/apt/sources.list.d/redis.list
 ```
 
 Then install Redis by typing:
 ```bash
-sudo apt install redis-server
+apt update
+apt install redis-tools
+snap install redis
 ```
 
 Open this file with your preferred text editor:
