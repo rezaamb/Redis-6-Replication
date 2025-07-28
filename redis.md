@@ -21,7 +21,11 @@ sudo apt install redis-server -y
 or
 snap install redis
 ```
-
+then give permission to ```/var/lib/redis```
+```bash
+sudo chown -R redis:redis /var/lib/redis
+sudo chmod 750 /var/lib/redis
+```
 Open this file with your preferred text editor:
 ```bash
 sudo vim /etc/redis/redis.conf
