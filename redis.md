@@ -17,6 +17,8 @@ Then install Redis by typing:
 ```bash
 apt update
 apt install redis-tools
+sudo apt install redis-server -y
+or
 snap install redis
 ```
 
