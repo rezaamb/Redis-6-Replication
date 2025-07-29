@@ -13,7 +13,7 @@ rm -f /var/lib/redis/dump.rdb
 rm -f /var/lib/redis/appendonly.aof
 ```
 
-3. For Cluster Reset Hard :
+3. For Cluster Reset Hard For Each Node :
 ```bash
 redis-cli -h 172.x.x.x -p <Port> -a "<StrongPassword>" FLUSHALL
 redis-cli -h 172.x.x.x -p <Port> -a "<StrongPassword>" CLUSTER RESET HARD
