@@ -218,10 +218,45 @@ and Then for Authentication give it your Password :
 ```bash
 auth <strongpassword>
 ```
+for see clusters : 
+
+```bash
+cluster nodes
+```
+
 somw commands for listenning and testing :
 
 ```
 ufw status
 ss -tuln | grep 6379
 ls /var/lib/redis/ -alh
+```
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+
+
+For making user :
+
+go to ```vim /etc/redis/redis.conf``` and add this command :
+
+```bash
+USER <user> on ><Password>  ~<user>:* +@all
+```
+and then Restart Redis :
+
+```bash
+systemctl restart redis
+```
+
+for using that : 
+```bash
+redis-cli -u redis://<user>:<Password>@172.16.1.1:<Port>
+```
+```bash
+ACL LIST
+ACL USERS
+ACL GETUSER <username>
 ```
