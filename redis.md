@@ -136,6 +136,7 @@ Step 2 — Testing Redis :
 
 then get status Redis :
 ```bash
+systemctl restart redis
 systemctl status redis
 ```
 If it is running without any errors, this command will produce output similar to the following:
@@ -154,12 +155,28 @@ Output
      CGroup: /system.slice/redis-server.service
              └─36561 /usr/bin/redis-server 127.0.0.1:6379
 . . .
+
 ```
+
+some commands for listenning and testing :
+
+```
+ufw status
+sudo ufw disable
+
+ss -tuln | grep <port>
+
+ls -ltrh /var/lib/redis/ 
+```
+
 Here, you can see that Redis is running and is already enabled, meaning that it is set to start up every time the server boots.
 
 To test that Redis is functioning correctly, connect to the server using redis-cli, Redis’s command-line client:
 ```bash
-redis-cli
+redis-cli -p <port>
+```
+```
+auth <strongPasswd>
 ```
 In the prompt that follows, test connectivity with the ping command:
 ```
@@ -224,7 +241,7 @@ for see clusters :
 cluster nodes
 ```
 
-somw commands for listenning and testing :
+some commands for listenning and testing :
 
 ```
 ufw status
